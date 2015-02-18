@@ -1,0 +1,170 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:padding="8dip" >
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="10dp"
+        android:contentDescription="TODO"
+        android:src="@drawable/demo_food1" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/icon"
+        android:padding="16dip" >
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/txt_view_address"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txt_view_restaurant_name"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/txt_view_restaurant_name"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:text="Gulshan,Dhaka"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/txt_view_about"
+        android:layout_width="fill_parent"
+        android:layout_height="20dip"
+        android:layout_above="@+id/relativeLayout1"
+        android:layout_alignLeft="@+id/txt_view_address"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:text="Seafood Fish and Fast "
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txt_view_about"
+        android:layout_alignRight="@+id/txt_view_about"
+        android:layout_below="@+id/txt_view_about"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textView2"
+            android:layout_alignLeft="@+id/textView2"
+            android:src="@drawable/star_active" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textView2"
+            android:layout_alignLeft="@+id/textView2"
+            android:src="@drawable/star_active" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textView2"
+            android:layout_alignLeft="@+id/textView2"
+            android:src="@drawable/star_active" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textView2"
+            android:layout_alignLeft="@+id/textView2"
+            android:src="@drawable/star_active" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textView2"
+            android:layout_alignLeft="@+id/textView2"
+            android:src="@drawable/star_active" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/textView1"
+            android:layout_alignTop="@+id/linearLayout1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="31dp"
+            android:text="1.5"
+            android:textColor="#009900"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txt_view_restaurant_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/icon"
+        android:layout_toRightOf="@+id/icon"
+        android:gravity="center_vertical"
+        android:text="Fish and Co."
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/views"
+        android:layout_alignBottom="@+id/views"
+        android:layout_alignRight="@+id/linearLayout1"
+        android:text=" friends were here"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/views"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/views"
+        android:text="Reviews"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/views"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/relativeLayout1"
+        android:layout_below="@+id/linearLayout1"
+        android:text="1,000"
+        android:textColor="#009900"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView1"
+        android:layout_alignBottom="@+id/textView1"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@+id/textView1"
+        android:text="420"
+        android:textColor="#009900"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

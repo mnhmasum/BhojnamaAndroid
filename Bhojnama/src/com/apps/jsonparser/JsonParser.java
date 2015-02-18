@@ -27,8 +27,6 @@ public class JsonParser {
 	public static void parseNearbyData(String response) throws JSONException {
 		String logindata;
 		
-		ArrayList<NearbyInfo> listNearByInfo = new ArrayList<NearbyInfo>();
-		
 		JSONObject jDataObj = new JSONObject(response);
 		logindata = jDataObj.getString("status");
 		
@@ -41,9 +39,7 @@ public class JsonParser {
 			nearByInfo.setRestaurantAddress(jsonResultArray.getJSONObject(i).getString("vicinity"));
 			nearByInfo.setLat(jsonResultArray.getJSONObject(i).getJSONObject("geometry").getJSONObject("location").getDouble("lat"));
 			nearByInfo.setLon(jsonResultArray.getJSONObject(i).getJSONObject("geometry").getJSONObject("location").getDouble("lng"));
-			//listNearByInfo.add(nearByInfo);
 			BhojNamaSingleton.getInstance().getArrayListNearByInfo().add(nearByInfo);
-			Log.e("****","LNG ===== "+ jsonResultArray.getJSONObject(i).getJSONObject("geometry").getJSONObject("location").getDouble("lat")); 
 		}
 		
 		//BhojNamaSingleton.getInstance().setArrayListNearByInfo(listNearByInfo);
@@ -62,11 +58,7 @@ public class JsonParser {
 		JSONArray jsonResultArray = jDataObj.getJSONObject("data").getJSONArray("restaurant");
 		int resultSize = jsonResultArray.length();
 		
-		Log.e("SIZE HOT", "-----" + resultSize);
-		
 		for (int i = 0; i < resultSize; i++) {
-			
-			Log.e("Restaurant name HOT", "-----" + jsonResultArray.getJSONObject(i).getString("name"));
 			HottestInfo hottestInfo = new HottestInfo();
 			hottestInfo.setRestaurantId(jsonResultArray.getJSONObject(i).getInt("id"));
 			hottestInfo.setRestaurantName(jsonResultArray.getJSONObject(i).getString("name"));
@@ -110,7 +102,6 @@ public class JsonParser {
 		
 		//BhojNamaSingleton.getInstance().getHottestInfoList().add;
 		//BhojNamaSingleton.getInstance().setArrayListNearByInfo(listNearByInfo);
-		Log.e("****"," ===== "+ logindata + " size= " + jsonResultArray.length()); 
 		
 	}
 	
@@ -125,11 +116,7 @@ public class JsonParser {
 		JSONArray jsonResultArray = jDataObj.getJSONObject("data").getJSONArray("restaurants");
 		int resultSize = jsonResultArray.length();
 		
-		Log.e("SIZE HOT", "-----" + resultSize);
-		
 		for (int i = 0; i < resultSize; i++) {
-			
-			Log.e("Restaurant name HOT", "-----" + jsonResultArray.getJSONObject(i).getString("name"));
 			HottestInfo hottestInfo = new HottestInfo();
 			hottestInfo.setRestaurantId(jsonResultArray.getJSONObject(i).getInt("id"));
 			hottestInfo.setRestaurantName(jsonResultArray.getJSONObject(i).getString("name"));
@@ -144,7 +131,6 @@ public class JsonParser {
 			int brachSize = branchArray.length();
 			
 			for (int j = 0; j < brachSize; j++) {
-				Log.e("Restaurant Branch HOT", "-----" + branchArray.getString("city"));
 				hottestInfo.setBranchId(branchArray.getInt("id"));
 				hottestInfo.setIsOpen(branchArray.getInt("is_open"));
 				hottestInfo.setCity(branchArray.getString("city"));
@@ -155,7 +141,6 @@ public class JsonParser {
 			}
 			
 			hottestInfo.setHottestFoodItemList(listHottestItem);
-			//listHottestInfo.add(hottestInfo);
 			BhojNamaSingleton.getInstance().getHottestInfoList().add(hottestInfo);
 			
 		}
@@ -188,12 +173,9 @@ public class JsonParser {
 			foodShotsInfo.setFoodShotName(jsonArray.getJSONObject(i).getString("name"));
 			foodShotsInfo.setFoodShotDetails(jsonArray.getJSONObject(i).getString("detail"));
 			
-			//Log.e("FoodShot name","" +jsonArray.getJSONObject(i).getString("name"));
-			//Log.e("FoodShot name","" +jsonArray.getJSONObject(i).getString("detail"));
 			JSONArray jsonArrayPhotos = jsonArray.getJSONObject(i).getJSONArray("photos");
 			int photosArraySize = jsonArrayPhotos.length();
 			for (int j = 0; j < photosArraySize; j++) {
-				//Log.e("URL", "" + jsonArrayPhotos.getJSONObject(j).getString("url"));
 			}
 			
 			JSONArray jsonArrayComments = jsonArray.getJSONObject(i).getJSONArray("comments");
@@ -202,7 +184,6 @@ public class JsonParser {
 			ArrayList<FoodShotsCommentsInfo> arrayListFoodShotComments = new ArrayList<FoodShotsCommentsInfo>();
 			for (int j = 0; j < commentsArray; j++) {
 				FoodShotsCommentsInfo foodShotComments = new FoodShotsCommentsInfo();
-				//getInt("author")
 				foodShotComments.setAuthorId(jsonArrayComments.getJSONObject(j).getJSONObject("author").getInt("id"));
 				foodShotComments.setAuthorName(jsonArrayComments.getJSONObject(j).getJSONObject("author").getString("name"));
 				foodShotComments.setCommentId(jsonArrayComments.getJSONObject(j).getInt("id"));
@@ -225,8 +206,6 @@ public class JsonParser {
 		JSONArray jsonArray = jsonDataObject.getJSONArray("restaurant");
 		
 		int foodShotSize = jsonArray.length();
-		Log.e("FoodShot Size", "-----=== " + foodShotSize);
-		
 		for (int i = 0; i < foodShotSize; i++) {
 			RestaurantInfo restaurantInfo = new RestaurantInfo();
 			restaurantInfo.setRes_id(jsonArray.getJSONObject(i).getInt("id"));
@@ -245,8 +224,6 @@ public class JsonParser {
 		JSONArray jsonArray = jsonDataObject.getJSONArray("branches");
 		
 		int foodShotSize = jsonArray.length();
-		Log.e("FoodShot Size", "-----=== " + foodShotSize);
-		
 		for (int i = 0; i < foodShotSize; i++) {
 			BranchInfo branchInfo = new BranchInfo();
 			branchInfo.setBranch_id(jsonArray.getJSONObject(i).getInt("id"));
@@ -279,9 +256,7 @@ public class JsonParser {
 		
 	}
 	
-	
 	public static void parseReview(String response, int currentArraySize) throws JSONException {
-		Log.e("Current Size", "=== " + currentArraySize);
 		JSONObject jsonData = new JSONObject(response);
 		JSONObject jsonDataObject = jsonData.getJSONObject("data");
 		JSONObject jsonPagignatorObject = jsonData.getJSONObject("paginator");
@@ -290,10 +265,7 @@ public class JsonParser {
 		
 		JSONArray jsonArray = jsonDataObject.getJSONArray("foodShot");
 		
-		
 		int foodShotSize = jsonArray.length();
-		Log.e("FoodShot Size", "-----=== " + foodShotSize);
-		
 		if (foodShotSize == 0) {
 			return;
 		}
@@ -303,12 +275,11 @@ public class JsonParser {
 			JSONArray jsonArrayComments = jsonArray.getJSONObject(i).getJSONArray("comments");
 			int commentsArraySize = jsonArrayComments.length();
 			for (int j = 0; j < commentsArraySize; j++) {
-				//Log.e("URL", "" + jsonArrayPhotos.getJSONObject(j).getString("url"));
-			reviewInfo.setId(jsonArrayComments.getJSONObject(j).getInt("id"));
-			reviewInfo.setTitle(jsonArrayComments.getJSONObject(j).getString("title"));
-			reviewInfo.setDetails(jsonArrayComments.getJSONObject(j).getString("detail"));
-			reviewInfo.setPulishedDate(jsonArrayComments.getJSONObject(j).getString("publishedDate"));
-			reviewInfo.setAuthor(jsonArrayComments.getJSONObject(j).getInt("author"));
+				reviewInfo.setId(jsonArrayComments.getJSONObject(j).getInt("id"));
+				reviewInfo.setTitle(jsonArrayComments.getJSONObject(j).getString("title"));
+				reviewInfo.setDetails(jsonArrayComments.getJSONObject(j).getString("detail"));
+				reviewInfo.setPulishedDate(jsonArrayComments.getJSONObject(j).getString("publishedDate"));
+				reviewInfo.setAuthor(jsonArrayComments.getJSONObject(j).getInt("author"));
 			}
 			
 			BhojNamaSingleton.getInstance().getArrayListReviewInfo().add(reviewInfo);
